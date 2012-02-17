@@ -1,0 +1,196 @@
+#必要とするコマンド、ファイル:
+line2ngram系コマンド
+ngram2*系コマンド
+term_rntry系コマンド
+/home/pub/include/alloc.c
+/etc/services
+
+#article-match-serverle8.0.3.26
+n-gramにlong long intを使うle8 (litle endian 8 bytes)系とintを使うle4系に分岐。
+検索コマンド、ExecCommSearchSortedList() -> これから。
+スキップソート -> 予想に反し収束させるのが非常に難しい -> ペンディング -> 傾きが最初からMaxまたはMinに収束してしまい、抜け出せない。
+
+#article-match-server.0.3.25
+scan(3)メッセージの追加 -> OK。
+32bit化 -> あきらめた。
+検索コマンド、ExecCommSearchSortedList() -> これから。
+メモリアロケーション量を正確に -> child procが落ちる場合あり -> セグフォでなく、memory corruptionのメッセージになるので注意(実際はメモリ不足による) -> メッセージ "comm size over" のために40と決め打ちしている -> ひとまずOK。
+スキップソート -> 予想に反し収束させるのが非常に難しい -> ペンディング -> 傾きが
+
+#article-match-server.0.3.24
+タイプミス修正(db_func.c)。 -> OK
+2011-11-08 mac OS X 対応。 -> firewallをとりあえず切る。 -> OK
+2011-11-08 mac OS X 対応。 -> Makefile作成 -> OK
+ファイアウォールの切りかた:
+sysctl -w net.inet.ip.fw.enable=0
+TODO: mac osxで正しいipfwの設定
+検索コマンド、ExecCommSearchSortedList() -> これから。
+メモリアロケーション量を正確に -> child procが落ちる場合あり -> セグフォでなく、memory corruptionのメッセージになるので注意(実際はメモリ不足による)。
+スキップソート -> 予想に反し収束させるのが非常に難しい -> ペンディング -> 傾きが
+最初からMaxまたはMinに収束してしまい、抜け出せない。
+
+#article-match-server.0.3.23
+メモリアロケーション量を正確に -> child procが落ちる場合あり -> セグフォでなく、memory corruptionのメッセージになるので注意(実際はメモリ不足による)。
+検索コマンド、ExecCommSearchSortedList() -> これから。
+スキップソート -> 予想に反し収束させるのが非常に難しい -> ペンディング -> 傾きが最初からMaxまたはMinに収束してしまい、抜け出せない。
+
+#article-match-server.0.3.22
+メモリアロケーション量を正確に -> child procが落ちる場合あり -> セグフォでなく、memory corruptionのメッセージになるので注意(実際はメモリ不足による)。
+検索コマンド、ExecCommSearchSortedList() -> これから。
+スキップソート -> 予想に反し収束させるのが非常に難しい -> ペンディング。
+
+#article-match-server.0.3.20
+メモリアロケーション量を正確に -> child procが落ちる場合あり -> セグフォでなく、memory corruptionのメッセージになるので注意(実際はメモリ不足による)。
+検索コマンド、ExecCommSearchSortedList() -> これから。
+
+#article-match-server.0.3.18
+メモリアロケーション量を正確に -> child procが落ちる場合あり -> セグフォでなく、memory corruptionで落ちるので注意(実際はメモリ不足による)。
+検索コマンドの作成 -> 作成中。
+ExecCommSearchSortedList() -> これから。
+
+#article-match-server.0.3.17
+検索コマンドの作成 -> 作成中。
+ExecCommSearchList() -> 完了。
+ExecCommSearchSortedList() -> これから。
+
+#article-match-server.0.3.16
+検索コマンドの作成 -> 作成中。
+
+#article-match-server.0.3.15
+検索コマンドの作成 -> 作成中。
+NgramのNを読み込む機能を追加 -> 完了。
+
+#article-match-server.0.3.14
+検索コマンドの作成 -> 作成中。
+
+#article-match-server.0.3.13
+検索コマンドの作成 -> 作成中。
+データベースへのread機能を清書 - OK
+search_func系コードのdb_func系コードへの統合。
+
+#article-match-server.0.3.12
+検索コマンドの作成 -> 作成中。
+
+#article-match-server.0.3.11
+検索コマンドの作成 -> 作成中。
+comm_func.c: または、
+childloop.c:
+RsltBuf.len >= RsltBuf.size のときのエラー処理が必要 -> 姑息な方法で回避。
+
+#article-match-server.0.3.10 
+データベースへのread機能を追加中 - OK
+mainloop.c - alloc()系関数による余分なメモリ要求を調整すること - OK
+
+#article-matich-server.0.3.6
+ExecComm()関連の書き直し。
+
+#article-matich-server.0.3.3
+送信データの最後に'0x04'を追加。
+
+#article-matich-server.0.3.1
+コードの分離(ヘッダファイル)。
+
+#article-matich-server.0.3
+main()にてファイルよみこむ。
+ターム/文献情報構造体定義。
+サーバドキュメントルート決定:
+/usr/local/var/arts
+data_op.cへコード分離。
+
+#article-matich-server.0.2
+メジャーバージョンを2から0に。
+ExecComm()を削除。
+コマンドシークエンス終了バイトをdefine。
+comm_func.cを分離。
+ExecComm()テスト実装。
+
+#article-matich-server.0.1
+コピー、若干の書き直し。
+InterpretComm()の追加。
+ExecComm()の書き直し。
+
+#server_22
+清書。
+ChildLoop()にEAGAINを追加。
+
+#server_21
+client_address変数の処理を変更。
+
+#server_20
+メモリアロケーションにalloc.cを使用。
+バッファオペレーション関数を追加。
+realloc以外のアロケーションをalloc.cの定義関数にて書き直した。
+
+#server_19
+comm_sizeのチェックをミスっていたのを修正。
+comm_size over の際の処理をミスっていたのを修正。
+
+#server_18
+RecvData()の改良。
+
+#server_17
+cnameの削除。
+client_nameの処理でエラーが生じた場合に対応。
+
+#server_16
+InitParam()の削除。
+InitSocket(char *_servname): サービスネームを引数として渡す仕様に変更。
+listen()のタイミングを修正。
+
+#server_15
+終了処理の拡張
+
+#server_14
+終了処理をミスっていたのを修正。
+RecvData()がend_flagを返すように。
+
+#server_13
+server_12の清書。
+
+#server_12
+server_11の清書。
+
+#server_11
+バッファ、RsltBufの追加。
+関数、ExecComm()の追加。
+
+#server_10
+SendData()
+の改良。
+
+#servet_9
+コマンド終了を0x04に変更。
+
+#server_8
+server_7の改良。
+セミコロンのエスケープを可能に。
+エスケープキー'\'の入力を可能に。
+最低限のコマンド処理の準備が完了。
+
+#server_7
+server_6の改良。
+SendData() - 一度に送られない場合に対応。
+最低限のロバスト性を備えたサーバになっているはず。
+
+#server_6
+server_5の改良。
+クライアント側にCommを送信。
+CommBufサイズを越えるコマンドの打ち切り処理。
+
+#server_5
+server_4の改良。
+CommBufの最初の空白文字を削除。
+これにより一文字づつ送られてくる場合にも対応。
+
+#server_4
+server_3の改良。
+C for Linuxによるコード(242ページまでの分)の改良。
+CommBuf変数を追加。
+RecvBufにバファリングしながらCommBuf溜める。
+';'でコマンド処理/バッファクリア。
+
+#server_3
+C for Linuxによるコード(242ページまでの分)。
+childloop.c mainloop.c　の分離。
+ChildLoopの改良。
+

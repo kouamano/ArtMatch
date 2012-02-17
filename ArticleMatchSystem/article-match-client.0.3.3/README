@@ -1,0 +1,14 @@
+#必要とするシステム:
+line2ngram系コマンド
+ngram2*系コマンド
+
+#article-match-client.0.3.2
+get_bufをcarrier_bufとRecvBufに使い分ける。
+greetingの処理完了。
+
+#article-match-client.0.3
+0.2の清書。
+
+#使いかた
+echo 'Search?29' | ./ArtClient method=SIN host=127.0.0.1
+

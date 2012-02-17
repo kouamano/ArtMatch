@@ -1,0 +1,16 @@
+## 1. タイトルのエントリから、直接、オーバーラップngramのllX表現を生成(位置情報>付き、文末処理):
+line2ngramINT_pos if=user_pub.20100219.title.trim.upper.NO -T > user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail
+## 2. line2ngram系コマンドの出力から、ngramペアを生成:
+ngram2ngram_pair.pl if=user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail N=4 > user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair
+## 3. ngramペアからtriを生成:
+ngramINT_pos_pair2termVSpos_article_next.pl user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair > user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair.tri
+## 4. triをsort:
+sort user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair.tri > user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair.tri.sort
+## 5. sortされたtriをreduce(余計な空行が入ることに注意):
+sorted_termVSpos_article_next2reduced_list.pl user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair.tri.sort > user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair.tri.sort.reduce
+## 6. reduceされたデータのnextをポインタ(termのオーダー)に変換:
+reduced_list2ordering.pl user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair.tri.sort.reduce > user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair.tri.sort.reduce.order.NO
+
+##全部一緒に行う
+line2ngramINT_pos if=user_pub.20100219.title.trim.upper.NO -T | ngram2ngram_pair.pl if=/dev/stdin | ngramINT_pos_pair2termVSpos_article_next.pl |  sort | sorted_termVSpos_article_next2reduced_list.pl | reduced_list2ordering.pl
+

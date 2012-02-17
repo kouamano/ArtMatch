@@ -1,0 +1,144 @@
+#これは何か
+このシステムは、文献に対しN-gram検索を行う。
+ヒットしたN-gramを含む文献IDを返す。
+テキストからN-gramを作成するプログラム、
+それを読み込みデータベース化するプログラム、
+それに対し問い合わせを行うプログラムから成る。
+
+#インストール
+[]$ cd ArticleMatchSystem/formatter
+[]$ ./configure
+[]$ make
+[]$ make install
+[]$ cd ArticleMatchSystem/data
+[]$ make
+[]$ make install
+[]$ cd ArticleMatchSystem/article-match-server.0.3.24
+[]$ ./configure
+[]$ make
+[]$ make install
+[]$ cd ArticleMatchSystem/article-match-client.0.3.4
+[]$ ./configure
+[]$ make
+[]$ make install
+
+
+
+#最新サブシステム:
+article-match-server_le4.0.3.26
+article-match-server_le8.0.3.25
+article-match-client.0.3.4
+#最新コマンド:
+digest_word.pl
+multiSP_to_singleSP.pl
+ngram2ngram_pair.pl
+ngramINT_pos_pair2termVSarticle.pl
+ngramINT_pos_pair2termVSnext.pl
+ngramINT_pos_pair2termVSpos_article.pl
+ngramINT_pos_pair2termVSpos_article_next.pl
+reduced_list2ordering.pl
+sorted_termVSpos_article_next2reduced_list.pl
+strip_trim.pl
+line2ngram
+line2ngramINT
+line2ngramINT_pos
+line2ngram_pos
+#最新ソース:
+line2ngram.c
+line2ngramINT.c
+line2ngramINT_pos.c
+line2ngram_pos.c
+
+
+
+#アプリケーション構成
+/usr/local/bin/ArtServer
+/usr/local/bin/ArtClient
+/usr/local/var/arts/arts.conf
+/usr/local/var/arts/arts.idx
+/usr/local/var/arts/arts.N
+
+
+
+#システム設定変更
+/etc/services
+==add==
+ArtServer       19990/tcp
+==over==
+
+
+
+#これから必要なもの:
+##1対1関係からterm対複数値の関係を作る(sort済みtermからダブりなしterm):
+sorted_termVSpos_article2entry.pl
+sorted_termVSarticle2entry.pl
+sorted_termVSnext2entry.pl
+##直接term対複数値の関係を作る(sortされていないtermからsort済みダブりなしterm):
+ngramINT2term_index :
+  format:: <term>:{<articleID>}s\n
+ngramINT_pos2term_pos_index
+  format:: <term>:{<articleID>,<pos>}s\n
+ngramINT_pair2term_pair_index
+  format:: <term>:{<next>}s\t{<articleID>}s\n
+ngramINT_pos_pair2term_pos_pair_index
+  format:: <term>:{<next>}s\t{<articleID>,<pos>}s\n
+
+
+
+#作成済みプログラム:
+##titleのエントリからngramを生成:
+line2ngram
+line2ngramINT
+line2ngram_pos
+line2ngramINT_pos
+##ngramデータからngramペア(ngramと次に続くngram)を生成:
+ngram2ngram_pair.pl
+##ngramのtermとarticleID,posとnextの1対1対1関係(.tri)を作る:
+ngramINT_pos_pair2termVSarticle.pl
+  format:: <term>\t<articleID>\n
+ngramINT_pos_pair2termVSpos_article.pl
+  format:: <term>\t<pos>,<articleID>\n
+ngramINT_pos_pair2termVSnext.pl
+  format:: <term>\t<next>\n
+ngramINT_pos_pair2termVSpos_article_next.pl
+  format:: <term>\t<pos>,<articleID>\t<next>\n
+##16進表現をソートするためのツール:
+sorthex.pl
+##1対1対1関係からterm対複数値の関係を作る(sort済みtermからダブりなしterm):
+sorted_termVSpos_article_next2reduced_list.pl (たぶんOK。)
+##"next term"を"term entry No."に変換:
+reduced_list2ordering.pl
+
+
+
+#例
+##タイトルのエントリから、オーバーラップngramを生成:
+line2ngram if=user_pub.20100219.title.trim.upper.NO > user_pub.20100219.title.trim.upper.NO.4gram
+##さらにそこからngramを符号無し整数(%lld)に
+ngram2int if=user_pub.20100219.title.trim.upper.NO.4gram > user_pub.20100219.title.trim.upper.NO.4gram.lld
+##タイトルのエントリから、直接、オーバーラップngramのllX表現を生成:
+line2ngramINT if=user_pub.20100219.title.trim.upper.NO > user_pub.20100219.title.trim.upper.NO.4gramINT
+##タイトルのエントリから、オーバーラップngramを生成(位置情報付き):
+line2ngram_pos if=user_pub.20100219.title.trim.upper.NO > user_pub.20100219.title.trim.upper.NO.4gram_pos
+
+
+
+#作業フロー例
+## 1. タイトルのエントリから、直接、オーバーラップngramのllX表現を生成(位置情報付き、文末処理、1行スキップ、n=4):
+line2ngramINT_pos if=user_pub.20100219.title.trim.upper.NO -T > user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail
+## 2. line2ngram系コマンドの出力から、ngramペアを生成:
+ngram2ngram_pair.pl if=user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail N=4 > user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair
+## 3. ngramペアからtriを生成:
+ngramINT_pos_pair2termVSpos_article_next.pl user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair > user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair.tri
+## 4. triをsort:
+sort user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair.tri > user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair.tri.sort
+## 5. sortされたtriをreduce(余計な空行が入ることに注意):
+sorted_termVSpos_article_next2reduced_list.pl user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair.tri.sort > user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair.tri.sort.reduce
+## 6. reduceされたデータのnextをポインタ(termのオーダー)に変換:
+reduced_list2ordering.pl user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair.tri.sort.reduce > user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair.tri.sort.reduce.order.NO
+## 7. ArtServerを起動
+./ArtServer
+## 8 ArtClientを使ってリクエスト
+echo 'Search?29' | ./ArtClient method=SIN host=127.0.0.1
+
+
