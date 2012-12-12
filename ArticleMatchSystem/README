@@ -137,7 +137,7 @@ sorted_termVSpos_article_next2reduced_list.pl user_pub.20100219.title.trim.upper
 ## 6. reduceされたデータのnextをポインタ(termのオーダー)に変換:
 reduced_list2ordering.pl user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair.tri.sort.reduce > user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair.tri.sort.reduce.order.NO
 ## 7. リンク作成
-ln -s user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair.tri.sort.reduce.order.NO ./usr/local/var/art.idx
+ln -s user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair.tri.sort.reduce.order.NO /usr/local/var/art.idx
 ## 8. ArtServerを起動
 ./ArtServer
 ## 9. ArtClientを使ってリクエスト
