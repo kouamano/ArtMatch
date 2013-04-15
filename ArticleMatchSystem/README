@@ -39,6 +39,7 @@ ngramINT_pos_pair2termVSpos_article_next.pl
 reduced_list2ordering.pl
 sorted_termVSpos_article_next2reduced_list.pl
 strip_trim.pl
+toupper_addNO.pl
 line2ngram
 line2ngramINT
 line2ngramINT_pos
@@ -117,7 +118,7 @@ user_pub.20100219.title
 ##余分なスペースを除去
 strip_trim.pl user_pub.20100219.title > user_pub.20100219.title.trim
 ##すべてを大文字にしてNo.付与
-toupper_addNO.pl user_pub.20100219.title.trim > user_pub.20100219.title.trim.upper.NO
+toupper_addNO.pl user_pub.20100219.title.trim -T > user_pub.20100219.title.trim.upper.NO
 ##タイトルのエントリから、オーバーラップngramを生成:
 line2ngram if=user_pub.20100219.title.trim.upper.NO > user_pub.20100219.title.trim.upper.NO.4gram
 ##さらにそこからngramを符号無し整数(%lld)に
