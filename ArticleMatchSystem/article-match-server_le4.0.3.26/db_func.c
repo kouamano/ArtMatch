@@ -236,7 +236,7 @@ int ArtDBTermBinSearch(unsigned int query, DB_TERM_ENTRY *db, unsigned int max, 
         unsigned int cur_min = min;
         while(cur_min <= cur_max){
 		if((cur_max > max)||(cur_min > max)||(cur_min < min)||(cur_max < min)){
-			DB(fprintf(stderr,"HO HIT\n"));
+			DB(fprintf(stderr,"NO HIT\n"));
 			return(0);
 		}
                 target = (unsigned int)(cur_min + cur_max)/2;
@@ -253,7 +253,7 @@ int ArtDBTermBinSearch(unsigned int query, DB_TERM_ENTRY *db, unsigned int max, 
                 }
 		DB(fprintf(stderr,"min:cur_min::max:cur_max (current pos) (termINT) - %d:%d::%d:%d (%u) (%X)\n",min,cur_min,max,cur_max,target,db[target].termINT));
         }
-	DB(fprintf(stderr,"HO HIT\n"));
+	DB(fprintf(stderr,"NO HIT\n"));
 	DB(fprintf(stderr,"OUT ArtDBTermBinSearch()\n"));
         return(0);
 }
@@ -268,7 +268,7 @@ int ArtDBTermSkipSearch(unsigned int query, DB_TERM_ENTRY *db, unsigned int max,
 	double delta = 0;
         while(cur_min <= cur_max){
 		if((cur_max > max)||(cur_min > max)||(cur_min < min)||(cur_max < min)){
-			DB(fprintf(stderr,"HO HIT\n"));
+			DB(fprintf(stderr,"NO HIT\n"));
 			return(0);
 		}
 
@@ -294,13 +294,13 @@ int ArtDBTermSkipSearch(unsigned int query, DB_TERM_ENTRY *db, unsigned int max,
 			*hit_pos = target;
                         cur_max = target;
                 }else if(cur_min == cur_max){
-			DB(fprintf(stderr,"HO HIT\n"));
+			DB(fprintf(stderr,"NO HIT\n"));
 			return(0);
 		}
 		DB(fprintf(stderr,"min:cur_min::max:cur_max (current pos) (termINT) - %d:%d::%d:%d (%u) (%X)\n",min,cur_min,max,cur_max,target,db[target].termINT));
 		cur_pos = target;
         }
-	DB(fprintf(stderr,"HO HIT\n"));
+	DB(fprintf(stderr,"NO HIT\n"));
 	DB(fprintf(stderr,"OUT ArtDBTermSkipSearch()\n"));
         return(0);
 }
