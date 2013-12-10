@@ -60,9 +60,9 @@ static DB_TERM_ENTRY *db_term_entry;
 
 //my include
 #ifdef OSX
-#include "/Users/pub/include/alloc.c"
+#include "/Users/pub/src1/include/alloc.c"
 #else
-#include "/home/pub/include/alloc.c"
+#include "/home/pub/src1/include/alloc.c"
 #endif
 #include "arg_op.c"
 #include "data_op.c"
