@@ -26,9 +26,9 @@
 
 //my include
 #ifdef OSX
-#include "/Users/pub/include/alloc.c"
+#include "/Users/pub/src1/include/alloc.c"
 #else
-#include "/home/pub/include/alloc.c"
+#include "/home/pub/src1/include/alloc.c"
 #endif
 #include "data_op.h"
 #include "data_op.c"
