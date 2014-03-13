@@ -3,9 +3,9 @@
 #include <string.h>
 #include "ostype.h"
 #ifdef OSX
-#include "/Users/pub/include/alloc.c"
+#include "../../../include/alloc.c"
 #else
-#include "/home/pub/include/alloc.c"
+#include "../../../include/alloc.c"
 #endif
 
 #define NAME_LEN 1024
