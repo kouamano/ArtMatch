@@ -1,11 +1,11 @@
 #TODO
 ##alloc.cのディレクトリが変わったので対応すべし。 - OK
 file2ngram系コマンドの作成:
-line2ngram
-line2ngramINT
-line2ngram_pos
-line2ngramINT_pos
-
+file2ngram
+file2ngramINT
+file2ngram_pos
+file2ngramINT_pos
+その他もあるかも
 
 #これは何か
 このシステムは、文献に対しN-gram検索を行う。
@@ -16,10 +16,11 @@ line2ngramINT_pos
 データベースのエントリのインデックスは、
 {N-gramパターン}
 であり、これに対して
-line2ngram系で作成したデータをインポートした場合:
+1. line2ngram系で作成したデータをインポートした場合:
 {行番号, 行先頭からのバイト} 
 のペアの配列が付与される。
-file2ngam系で作成したデータ(集合)をインポートした場合:
+以下開発予定。
+2. file2ngam系で作成したデータ(集合)をインポートした場合:
 {ファイル番号, ファイル先頭からのバイト} 
 のペアの配列が付与される。
 
