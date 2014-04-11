@@ -33,11 +33,11 @@ file2ngramINT_pos
 []$ make
 []$ make install
 []$ cd ArticleMatchSystem/article-match-server_le4.0.3.26
-[]$ ./configure
+[]$ ./configure.pl
 []$ make
 []$ make install
 []$ cd ArticleMatchSystem/article-match-client.0.3.4
-[]$ ./configure
+[]$ ./configure.pl
 []$ make
 []$ make install
 
