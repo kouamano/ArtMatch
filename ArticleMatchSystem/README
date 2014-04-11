@@ -26,13 +26,13 @@ file2ngramINT_pos
 
 #インストール
 []$ cd ArticleMatchSystem/formatter
-[]$ ./configure
+[]$ ./configure.pl
 []$ make
 []$ make install
 []$ cd ArticleMatchSystem/data
 []$ make
 []$ make install
-[]$ cd ArticleMatchSystem/article-match-server.0.3.24
+[]$ cd ArticleMatchSystem/article-match-server_le4.0.3.26
 []$ ./configure
 []$ make
 []$ make install
