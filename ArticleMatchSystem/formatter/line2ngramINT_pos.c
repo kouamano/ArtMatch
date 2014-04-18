@@ -42,6 +42,7 @@ void help(){
 	printf("  -H: data with ID. / +H: data without ID.\n");
 	printf("  -T: Tail operation: On / +T Tail operation: Off.\n");
 	printf("  -h: print help.\n");
+	printf("  warning: maybe contain bug except -T -H (default) option?\n");
 	printf("\n");
 }
 
