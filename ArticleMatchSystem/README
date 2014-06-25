@@ -168,5 +168,17 @@ ln -s user_pub.20100219.title.trim.upper.NO.4gramINT_pos.tail.pair.tri.sort.redu
 ./ArtServer
 ## 9. ArtClientを使ってリクエスト
 echo 'Search?29' | ./ArtClient method=SIN host=127.0.0.1
+## 回答:
+Server le4; version 0.3.26
+db_n:4:
+Ready.
+
+greeting - success!
+mode: SIN
+
+comm:Search?29: 
+Hit:
+29,{38,27 76,131 102,74 281,126}
+break loop.
 
 
