@@ -5,6 +5,9 @@ $MAKEFILE = "Makefile";
 
 #config dir
 $CONF_DIR = "/usr/local/var/arts/";
+if(!-d $CONF_DIR){
+	mkdir $CONF_DIR;
+}
 
 #C code for a OS
 $OS_TYPE = `uname`;
