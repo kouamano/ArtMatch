@@ -19,9 +19,9 @@ if($OS_TYPE =~ /linux/i){
 
 #make for a OS
 if($OS_TYPE =~ /linux/i){
-	$INST_DIR = "/home/pub/bin/"
+	$INST_DIR = "/usr/local/bin/"
 }elsif($OS_TYPE =~ /darwin/i){
-	$INST_DIR = "/Users/pub/bin/"
+	$INST_DIR = "/usr/local/bin/"
 }
 
 #create Makefile
