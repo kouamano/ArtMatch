@@ -2,4 +2,4 @@
 echo 'Search?31'|./ArtClient host=127.0.0.1 method=SIN
 echo 'Search?BF8AE220'|./ArtClient host=127.0.0.1 method=SIN
 echo 'SearchList?BF8AE220 31'|./ArtClient host=127.0.0.1 method=SIN
-
+echo 'Search?48504C41' | ArtClient host=127.0.0.1 method=SIN	#ALPH
