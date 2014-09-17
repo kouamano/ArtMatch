@@ -40,7 +40,7 @@ int ChildLoop(int acc, char *client_address){
 	SendBuf.len=strlen(SendBuf.buf);
 	/* *) */
 
-	/* (* send-secv loop */
+	/* (* send-recv loop */
 	flag_loop_end = 0;
 	while(1){
 		is_exec = 0;
@@ -153,7 +153,7 @@ int ChildLoop(int acc, char *client_address){
 					comm_ptr = 0;
 					flag_comm_end = 0;
 				}else if(flag_comm_end == 2){	//error finish
-					if((SendBuf.buf = (char *)realloc(SendBuf.buf,sizeof(char) * (40))) == NULL){perror("realloc()"); exit(1);}	//size 40 for "error: commsize over.\r\n"
+					if((SendBuf.buf = (char *)realloc(SendBuf.buf,sizeof(char) * (SHORT_BUF_SIZE))) == NULL){perror("realloc()"); exit(1);}	//SHORT_BUF_SIZE for "error: commsize over.\r\n"
 					sprintf(SendBuf.buf,"%s","error: commsize over.\r\n");
 					SendBuf.len = strlen(SendBuf.buf);
 					for(i=0;i<CommBuf.size;i++){

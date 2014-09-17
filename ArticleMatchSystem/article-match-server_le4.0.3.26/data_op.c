@@ -23,7 +23,8 @@ int InitBuf(DATA_BUF *Buf, size_t size){
 	DB(fprintf(stderr,"buff size:%ld:\n",size));
         int i;
         Buf->len = 0;
-        Buf->size = size;
+        Buf->size = size+1; //?
+        //Buf->size = 1024; //?
 	if(Buf->buf == NULL){
         	Buf->buf = c_alloc_vec(Buf->size);
 	}

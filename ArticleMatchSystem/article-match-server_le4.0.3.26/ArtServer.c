@@ -85,7 +85,7 @@ int main(int argc, char **argv){
 	DB(fprintf(stderr,"sub port :%d:\n",serv_op.port));
 
 	//init global vars
-	InitBuf(&RecvBuf,SHORT_BUF_SIZE);
+	InitBuf(&RecvBuf,BUF_SIZE);
 	InitBuf(&CommBuf,LONG_BUF_SIZE);
 
 	//init socket

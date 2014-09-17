@@ -40,7 +40,7 @@ int (*ExecComm)();
 int ExecCommAlive(const DATA_BUF comm){
 	DB(fprintf(stderr,"IN ExecCommAlive().\n"));
 	if(RsltBuf.buf == NULL){
-		InitBuf(&RsltBuf,SHORT_BUF_SIZE);
+		InitBuf(&RsltBuf,BUF_SIZE);
 	}
 	sprintf(RsltBuf.buf+RsltBuf.len,"Alive.\r\n");
 	RsltBuf.len = strlen(RsltBuf.buf);
@@ -51,7 +51,7 @@ int ExecCommList(const DATA_BUF comm){
 	DB(fprintf(stderr,"IN ExecCommList().\n"));
 	unsigned int i;
 	DATA_BUF TmpBuf = {NULL,0,0};
-	InitBuf(&TmpBuf,SHORT_BUF_SIZE);
+	InitBuf(&TmpBuf,BUF_SIZE);
 	if(RsltBuf.buf == NULL){
 		InitBuf(&RsltBuf,LONG_LONG_BUF_SIZE);
 	}else{
@@ -84,7 +84,7 @@ int ExecCommSearch(const DATA_BUF comm){
 	hit = ArtDBTermBinSearch(query,db_term_entry,db_profile.num_term,0,&hit_pos);
 	//hit = ArtDBTermSkipSearch(query,db_term_entry,db_profile.num_term-1,0,&hit_pos);
 	if(RsltBuf.buf == NULL){
-		InitBuf(&RsltBuf,SHORT_BUF_SIZE);
+		InitBuf(&RsltBuf,BUF_SIZE);
 	}
 	if(hit > 0){
         	sprintf(RsltBuf.buf+RsltBuf.len,"\nHit:\n");
@@ -113,7 +113,7 @@ int ExecCommSearch(const DATA_BUF comm){
 int ExecCommSearchList(const DATA_BUF comm){
         DB(fprintf(stderr,"IN ExecCommSearch()\n"));
         DB(fprintf(stderr,"command in ExecCommSearchList:::%s:::",comm.buf));
-	char query_str[SHORT_BUF_SIZE];
+	char query_str[BUF_SIZE];
 	int query_str_len = 0;
 	int num_query_entry = 0;
 	unsigned int *queries;
@@ -172,7 +172,7 @@ int ExecCommSearchList(const DATA_BUF comm){
 	}
 	//init buf
 	if(RsltBuf.buf == NULL){
-		InitBuf(&RsltBuf,SHORT_BUF_SIZE*(num_query_entry + 1));
+		InitBuf(&RsltBuf,BUF_SIZE*(num_query_entry + 1));
 	}
 	//search
 	DB(fprintf(stderr,"num_queries:::%d:::\n",num_queries));
@@ -215,7 +215,7 @@ int ExecCommSearchList(const DATA_BUF comm){
 int ExecCommShlinkSearchList(const DATA_BUF comm){
         DB(fprintf(stderr,"IN ExecCommSearch()\n"));
         DB(fprintf(stderr,"command in ExecCommSearchList:::%s:::",comm.buf));
-	char query_str[SHORT_BUF_SIZE];
+	char query_str[BUF_SIZE];
 	int query_str_len = 0;
 	int num_query_entry = 0;
 	unsigned int *queries;
@@ -283,12 +283,12 @@ int ExecCommShlinkSearchList(const DATA_BUF comm){
 	DB(fprintf(stderr,"!!!HOGE!!!\n"));
 	//init buf
 	if(RsltBuf.buf == NULL){
-		InitBuf(&RsltBuf,SHORT_BUF_SIZE);
+		InitBuf(&RsltBuf,BUF_SIZE);
 	}
 	if(hit > 0){
         	sprintf(RsltBuf.buf+RsltBuf.len,"\nHit:\n");
 		RsltBuf.len = strlen(RsltBuf.buf);
-		if(ExpandBuf(&RsltBuf,SHORT_BUF_SIZE*num_query_entry) == -1){
+		if(ExpandBuf(&RsltBuf,BUF_SIZE*num_query_entry) == -1){
 			fprintf(stderr,"failed: ExpandBuf().\n");
 		}
 		for(i=0;i<num_query_entry;i++){
@@ -322,7 +322,7 @@ int ExecCommMulti(const DATA_BUF comm){
 int ExecCommTest(const DATA_BUF comm){
         DB(fprintf(stderr,"IN ExecCommTest()\n"));
 	if(RsltBuf.buf == NULL){
-		InitBuf(&RsltBuf,SHORT_BUF_SIZE);
+		InitBuf(&RsltBuf,BUF_SIZE);
 	}
         //sprintf(RsltBuf.buf+RsltBuf.len,"test (%d).\r\n",TEST_DATA[20]);
         RsltBuf.len = strlen(RsltBuf.buf);
@@ -335,7 +335,7 @@ int ExecCommTest(const DATA_BUF comm){
 int ExecCommUnknown(const DATA_BUF comm){
         DB(fprintf(stderr,"IN ExecCommUnknown()\n"));
 	if(RsltBuf.buf == NULL){
-		InitBuf(&RsltBuf,SHORT_BUF_SIZE);
+		InitBuf(&RsltBuf,BUF_SIZE);
 	}
         sprintf(RsltBuf.buf+RsltBuf.len,"undefined command.\r\n");
         RsltBuf.len = strlen(RsltBuf.buf);
