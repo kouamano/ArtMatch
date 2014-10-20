@@ -45,6 +45,8 @@ file2ngramINT_pos
 []$ ./configure.pl
 []$ make
 []$ make install
+## /etc/services ¤ËÄÉ²Ã:
+ArtServer	19990/tcp
 
 
 
