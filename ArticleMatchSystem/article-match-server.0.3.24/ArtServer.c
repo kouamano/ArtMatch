@@ -42,6 +42,7 @@
 #define DEFAULT_CONF_FILE "arts.conf"
 #define DEFAULT_DB_FILE "arts.idx"
 #define DEFAULT_N_FILE "arts.N"
+#define OSX
 
 //typedef
 #include "arg_op.h"
