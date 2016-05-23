@@ -15,7 +15,7 @@ little endian 4 bytes用のサーバ - long long intを廃止 - OK。
 scan(3)メッセージの追加 -> OK。
 検索コマンド、ExecCommSearchSortedList() -> これから。
 メモリアロケーション量を正確に -> child procが落ちる場合あり -> セグフォでなく、memory corruptionのメッセージになるので注意(実際はメモリ不足による) -> メッセージ "comm size over" のために40と決め打ちしている -> ひとまずOK。
-スキップソート -> 予想に反し収束させるのが非常に難しい -> ペンディング -> 傾きが
+スキップサーチ -> 予想に反し収束させるのが非常に難しい -> ペンディング -> 傾きが
 
 #article-match-server.0.3.24
 タイプミス修正(db_func.c)。 -> OK
@@ -26,18 +26,18 @@ sysctl -w net.inet.ip.fw.enable=0
 TODO: mac osxで正しいipfwの設定
 検索コマンド、ExecCommSearchSortedList() -> これから。
 メモリアロケーション量を正確に -> child procが落ちる場合あり -> セグフォでなく、memory corruptionのメッセージになるので注意(実際はメモリ不足による)。
-スキップソート -> 予想に反し収束させるのが非常に難しい -> ペンディング -> 傾きが
+スキップサーチ -> 予想に反し収束させるのが非常に難しい -> ペンディング -> 傾きが
 最初からMaxまたはMinに収束してしまい、抜け出せない。
 
 #article-match-server.0.3.23
 メモリアロケーション量を正確に -> child procが落ちる場合あり -> セグフォでなく、memory corruptionのメッセージになるので注意(実際はメモリ不足による)。
 検索コマンド、ExecCommSearchSortedList() -> これから。
-スキップソート -> 予想に反し収束させるのが非常に難しい -> ペンディング -> 傾きが最初からMaxまたはMinに収束してしまい、抜け出せない。
+スキップサーチ -> 予想に反し収束させるのが非常に難しい -> ペンディング -> 傾きが最初からMaxまたはMinに収束してしまい、抜け出せない。
 
 #article-match-server.0.3.22
 メモリアロケーション量を正確に -> child procが落ちる場合あり -> セグフォでなく、memory corruptionのメッセージになるので注意(実際はメモリ不足による)。
 検索コマンド、ExecCommSearchSortedList() -> これから。
-スキップソート -> 予想に反し収束させるのが非常に難しい -> ペンディング。
+スキップサーチ -> 予想に反し収束させるのが非常に難しい -> ペンディング。
 
 #article-match-server.0.3.20
 メモリアロケーション量を正確に -> child procが落ちる場合あり -> セグフォでなく、memory corruptionのメッセージになるので注意(実際はメモリ不足による)。
