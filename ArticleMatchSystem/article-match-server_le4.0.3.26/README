@@ -9,7 +9,7 @@ term_rntry系コマンド
 サーバをle4系とle8系に分岐。こちらは、le4系。
 little endian 4 bytes用のサーバ - long long intを廃止 - OK。
 検索コマンド、ExecCommSearchSortedList() -> これから。
-スキップソート -> 予想に反し収束させるのが非常に難しい -> ペンディング -> 傾きが最初からmaxまたはminに収束?
+スキップサーチ -> 予想に反し収束させるのが非常に難しい -> ペンディング -> 傾きが最初からmaxまたはminに収束?
 
 #article-match-server.0.3.25
 scan(3)メッセージの追加 -> OK。
