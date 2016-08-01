@@ -88,7 +88,7 @@ int main(int argc, char **argv){
 	InitBuf(&RecvBuf,BUF_SIZE);
 	InitBuf(&CommBuf,LONG_BUF_SIZE);
 
-	//init socket
+	//init socket, bind
 	if(InitSocket(SERVICE_NAME,serv_op.port) == -1){
 		return(-1);
 	}
