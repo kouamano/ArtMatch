@@ -1,2 +1,2 @@
 TODO:
-- サーバークライアントのベースを再構築、別プロジェクトに派生。
+- サーバークライアントのベースを再構築、別プロジェクト ( https://github.com/kouamano/server-client_base ) に反映。
